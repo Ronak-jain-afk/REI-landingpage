@@ -1,0 +1,35 @@
+# Next.js
+.next/
+out/
+build/
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Environment Variables
+.env*.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Design & Reference (Excluded from GitHub)
+design-language.jpg
+Wireframe_referance.jpg
+header-ref.png
+PRODUCT.md
+DESIGN.md
+landing-page-plan.md
+AGENTS.md
+CLAUDE.md
+*.Identifier
+
+# Local App Icon (Source)
+app-icon.png
