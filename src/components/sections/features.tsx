@@ -1,5 +1,5 @@
 import { Shield, Zap, Moon, FileText, Database, Package } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 const features = [
   {

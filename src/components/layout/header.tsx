@@ -3,8 +3,8 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Github, Download } from "lucide-react"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Github } from "lucide-react"
+import { buttonVariants } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
 import {
   NavigationMenu,

@@ -1,31 +1,13 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Monitor, Terminal, Github } from "lucide-react"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-
-interface Release {
-  tag_name: string
-  assets: {
-    name: string
-    browser_download_url: string
-  }[]
-}
+import { useGitHubRelease } from "@/hooks/useGitHubRelease"
 
 export function DownloadSection() {
-  const [release, setRelease] = useState<Release | null>(null)
-
-  useEffect(() => {
-    fetch("https://api.github.com/repos/Ronak-jain-afk/RE-Invoice/releases/latest")
-      .then((res) => res.json())
-      .then((data) => setRelease(data))
-      .catch((err) => console.error("Error fetching release:", err))
-  }, [])
-
-  const exeAsset = release?.assets.find((a) => a.name.endsWith(".exe"))
-  const debAsset = release?.assets.find((a) => a.name.endsWith(".deb"))
+  const { release, exeAsset, debAsset } = useGitHubRelease()
 
   return (
     <section id="download" className="py-32 bg-primary text-primary-foreground overflow-hidden relative mx-4 md:mx-10 rounded-[3rem] my-24">
@@ -36,7 +18,7 @@ export function DownloadSection() {
             <span className="opacity-60 italic">Take Control?</span>
           </h2>
           <p className="mt-8 max-w-[700px] text-primary-foreground/80 text-lg sm:text-2xl font-medium leading-relaxed">
-            Download RE-Invoice for free and start managing your inventory locally today. It's open source, secure, and built for speed.
+            Download RE-Invoice for free and start managing your inventory locally today. It&apos;s open source, secure, and built for speed.
           </p>
           
           <div className="mt-14 flex flex-wrap justify-center gap-6">

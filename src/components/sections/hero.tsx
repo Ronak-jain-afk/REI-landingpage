@@ -1,33 +1,14 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Download, Github, Monitor, Terminal } from "lucide-react"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-
-interface Release {
-  tag_name: string
-  assets: {
-    name: string
-    browser_download_url: string
-  }[]
-}
+import { useGitHubRelease } from "@/hooks/useGitHubRelease"
 
 export function Hero() {
-  const [release, setRelease] = useState<Release | null>(null)
-
-  useEffect(() => {
-    fetch("https://api.github.com/repos/Ronak-jain-afk/RE-Invoice/releases/latest")
-      .then((res) => res.json())
-      .then((data) => setRelease(data))
-      .catch((err) => console.error("Error fetching release:", err))
-  }, [])
-
-  const exeAsset = release?.assets.find((a) => a.name.endsWith(".exe"))
-  const debAsset = release?.assets.find((a) => a.name.endsWith(".deb"))
+  const { release, exeAsset, debAsset } = useGitHubRelease()
 
   return (
     <section className="relative overflow-hidden pt-20 pb-24 md:pt-32 md:pb-40">
